@@ -61,9 +61,9 @@ The dataset represents real defect patterns observed during coffee processing an
 
 If you use this dataset, please cite the original paper:
 
-'''
+```
 https://doi.org/10.1016/j.atech.2024.100680
-'''
+```
 
 Acknowledgment:  
 This dataset was supported by Mae Fah Luang University under the National Science, Research, and Innovation Fund (NSRF) 2023, grant no. 662A03049.
@@ -123,7 +123,7 @@ This architecture closely resembles real industrial inspection systems.
 
 ## 📁 Repository Structure (example)
 
-'''
+```
 coffee-bean-defect-detection/
 │
 ├── data/
@@ -145,4 +145,4 @@ coffee-bean-defect-detection/
 │
 ├── requirements.txt
 └── README.md
-'''
+```
