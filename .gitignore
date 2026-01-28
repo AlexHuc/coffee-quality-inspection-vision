@@ -1,6 +1,9 @@
 # Virtual environment
 /coffee_v
 
+# Ignore .pt files
+/models/*.pt
+
 # Byte-compiled / optimized / DLL files
 .DS_Store
 

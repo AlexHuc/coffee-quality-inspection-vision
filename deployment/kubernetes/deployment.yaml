@@ -1,0 +1,85 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: coffee-prediction
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coffee-prediction-config
+  namespace: coffee-prediction
+data:
+  FLASK_ENV: "production"
+  MODEL_DIR: "/app/models"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coffee-prediction-deployment
+  namespace: coffee-prediction
+  labels:
+    app: coffee-prediction
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coffee-prediction
+  template:
+    metadata:
+      labels:
+        app: coffee-prediction
+    spec:
+      containers:
+      - name: coffee-prediction
+        image: coffee-predictor:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9696
+          name: http
+        envFrom:
+        - configMapRef:
+            name: coffee-prediction-config
+        resources:
+          requests:
+            cpu: "1"
+            memory: "2Gi"
+          limits:
+            cpu: "2"
+            memory: "4Gi"
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 9696
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 9696
+          initialDelaySeconds: 30
+          periodSeconds: 15
+          timeoutSeconds: 5
+          failureThreshold: 3
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: coffee-prediction-service
+  namespace: coffee-prediction
+  labels:
+    app: coffee-prediction
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 9696
+    nodePort: 30081
+    protocol: TCP
+    name: http
+  selector:
+    app: coffee-prediction
