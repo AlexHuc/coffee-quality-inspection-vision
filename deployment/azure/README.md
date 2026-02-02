@@ -2,6 +2,8 @@
 
 This directory contains Terraform configuration files to deploy the Coffee Bean Defect Detection API on Microsoft Azure using Container Instances and App Service.
 
+![Azure](../../imgs/Azure.png)
+
 ## 📋 Architecture Overview
 
 The deployment includes two options:

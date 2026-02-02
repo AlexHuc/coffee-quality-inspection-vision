@@ -2,6 +2,8 @@
 
 This directory contains Terraform configuration files to deploy the Coffee Bean Defect Detection API on Google Cloud Platform (GCP) using Cloud Run.
 
+![GCP](../../imgs/GCP.png)
+
 ## 📋 Architecture Overview
 
 The deployment includes:

@@ -2,6 +2,8 @@
 
 This directory contains Terraform configuration files to deploy the Coffee Bean Defect Detection API on AWS using ECS Fargate.
 
+![AWS](../../imgs/AWS.png)
+
 ## 📋 Architecture Overview
 
 The deployment includes:
