@@ -2,7 +2,6 @@
 
 Automatic quality inspection of **Arabica green coffee beans** using deep learning and computer vision techniques for detecting and classifying defects in real-time.
 
-### Example of Input → Models → Outputs
 ![Coffee Bean Inspection](./imgs/coffee_inspection.png)
 
 ## Description of the Problem
@@ -385,38 +384,3 @@ Output: Class prediction + Confidence score
 - **Mobile App**: Mobile inference for on-site quality checks
 - **Ensemble Models**: Combine multiple architectures for improved accuracy
 - **Active Learning**: User feedback loop to continuously improve model
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit pull requests for:
-- Model improvements and new architectures
-- Additional defect classes
-- Deployment optimizations
-- Documentation enhancements
-
----
-
-## 📄 Citation
-
-If you use this project or dataset, please cite:
-
-```bibtex
-@dataset{coffee_defect_2024,
-  title={Coffee Bean Defect Detection Dataset},
-  author={Mae Fah Luang University},
-  year={2024},
-  doi={10.1016/j.atech.2024.100680}
-}
-```
-
----
-
-## 📞 Support
-
-For issues, questions, or suggestions, please refer to the individual deployment README files:
-- Local/Kubernetes: `./deployment/kubernetes/README.md`
-- AWS: `./deployment/aws/README.md`
-- GCP: `./deployment/gcp/README.md`
-- Azure: `./deployment/azure/README.md`
