@@ -1,0 +1,50 @@
+# GCP Configuration - Copy to terraform.tfvars and update values
+
+gcp_project_id      = "your-project-id"
+gcp_region          = "us-central1"
+app_name            = "coffee-prediction"
+environment         = "production"
+
+# Container Configuration
+container_port      = 9696
+container_image_tag = "latest"
+
+# Cloud Run Resources
+container_cpu       = "1"          # 0.25, 0.5, 1, 2, 4
+container_memory    = "512Mi"      # 128Mi to 8Gi
+
+# Request Configuration
+container_timeout   = 300          # seconds (1-3600)
+
+# Scaling Configuration
+min_instances       = 0            # 0 for serverless (scales down to zero)
+max_instances       = 10           # Maximum concurrent instances
+concurrency         = 80           # Concurrent requests per instance
+
+# VPC Configuration
+enable_vpc_connector = false        # Set to true for private networking
+vpc_connector_name   = null         # Required if enable_vpc_connector is true
+
+# Storage Configuration
+enable_model_bucket = true          # Enable Cloud Storage for models
+model_bucket_prefix = "gs://coffee-models"
+
+# Monitoring Configuration
+enable_monitoring   = true          # Enable Cloud Monitoring and alerts
+log_retention_days  = 30            # CloudLogging retention
+alert_threshold_cpu = 0.8           # Alert when CPU > 80%
+
+# Access Configuration
+enable_public_access = true         # Allow public access to Cloud Run service
+
+# Load Balancing (Advanced)
+enable_load_balancer = false        # Enable global load balancer
+custom_domain        = null         # Optional: Set custom domain name
+
+# Resource Labels
+labels = {
+  project     = "coffee-quality-inspection"
+  environment = "production"
+  managed-by  = "terraform"
+  owner       = "data-science-team"
+}

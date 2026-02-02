@@ -1,0 +1,50 @@
+# Example terraform.tfvars - Copy to terraform.tfvars and update values
+
+aws_region             = "us-east-1"
+app_name               = "coffee-prediction"
+environment            = "production"
+container_port         = 9696
+container_image_tag    = "latest"
+
+# ECS Configuration
+# Fargate CPU and Memory combinations:
+# 256 CPU: 512, 1024, 2048 MB
+# 512 CPU: 1024-4096 MB (in 1024 increments)
+# 1024 CPU: 2048-8192 MB (in 1024 increments)
+# 2048 CPU: 4096-16384 MB (in 1024 increments)
+# 4096 CPU: 8192-30720 MB (in 1024 increments)
+container_cpu          = 256
+container_memory       = 512
+
+# Task and Scaling
+desired_task_count      = 2
+min_task_count          = 1
+max_task_count          = 4
+
+# Auto-scaling thresholds (percentage)
+target_cpu_percentage    = 70
+target_memory_percentage = 80
+
+# VPC Configuration
+vpc_cidr               = "10.0.0.0/16"
+availability_zones     = ["us-east-1a", "us-east-1b"]
+
+# Logging
+log_retention_days     = 30
+
+# Health Check
+health_check_path      = "/health"
+health_check_interval  = 30
+health_check_timeout   = 5
+
+# Feature Flags
+enable_auto_scaling    = true
+
+# Tags
+tags = {
+  Project     = "coffee-quality-inspection"
+  Environment = "production"
+  ManagedBy   = "terraform"
+  Owner       = "data-science-team"
+  CostCenter  = "ai-ml"
+}

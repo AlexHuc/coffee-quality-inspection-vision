@@ -1,0 +1,52 @@
+# Azure Configuration - Copy to terraform.tfvars and update values
+
+azure_subscription_id   = "your-subscription-id"
+azure_tenant_id         = "your-tenant-id"
+azure_region            = "eastus"
+resource_group_name     = "coffee-prediction-rg"
+app_name                = "coffee-prediction"
+environment             = "production"
+
+# Container Configuration
+container_port          = 9696
+container_image_tag     = "latest"
+container_cpu           = 1         # CPU cores
+container_memory        = 1.5       # GB
+
+# Deployment Type
+deployment_type         = "app-service"  # or "container-instances"
+
+# App Service Configuration (if deployment_type = "app-service")
+app_service_tier        = "B1"       # B1, B2, B3, S1, S2, S3, P1V2, P2V2, P3V2
+app_service_instances   = 2
+
+# Container Instances Configuration (if deployment_type = "container-instances")
+container_instances_count = 2
+restart_policy          = "OnFailure"
+
+# Storage Configuration
+enable_blob_storage     = true
+storage_sku             = "Standard_LRS"
+
+# Container Registry Configuration
+container_registry_sku  = "Basic"  # Basic, Standard, Premium
+
+# Networking Configuration
+enable_app_gateway      = true
+app_gateway_capacity    = 2
+
+# Monitoring Configuration
+enable_monitoring       = true
+log_retention_days      = 30
+
+# Key Vault Configuration
+enable_key_vault        = true
+enable_soft_delete      = true
+
+# Tags
+tags = {
+  project     = "coffee-quality-inspection"
+  environment = "production"
+  managed-by  = "terraform"
+  owner       = "data-science-team"
+}
