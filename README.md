@@ -148,6 +148,11 @@ The Flask API will be available at: `http://localhost:9696`
 
 **Step 4: Kubernetes Deployment**
 
+
+# Record of Deployment on Kubernetes
+
+![Kubernetes Deploy](../../imgs/KubernetesDeploy.gif)
+
 Deploy to Minikube from the project root:
 ```bash
 ./deployment/kubernetes/deploy.sh
